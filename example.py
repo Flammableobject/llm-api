@@ -24,12 +24,23 @@ def deepseek_predict(prompt: str):
 
 # Main interaction loop
 while True:
-    inputprompt = input("\nEnter your question (or type 'exit' to quit): ")
+    inputprompt = input("\nEnter your question (or type 'exit' to quit, 'getmem' to exit and show memory, 'clearmem' to exit and clear memory): ")
     
     if inputprompt.lower() == "exit":
         print("Exiting...")
         break
 
+    if inputprompt.lower() == 'getmem':
+        print('Exiting with memory...')
+        print()
+        mem = memory.get_memory()
+        print(mem)
+        break
+
+    if inputprompt.lower() == 'clearmem':
+        print("Exitting and clearing memory...")
+        memory.clear_memory()
+        break
     response = deepseek_predict(inputprompt)
 
     print("\n====== Model response =====\n")
